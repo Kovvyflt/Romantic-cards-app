@@ -1,0 +1,363 @@
+/* Full styles.css for your romantic card app with responsive cards and scrollable backs */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Pacifico", cursive;
+  background: #fff0f3;
+  scroll-behavior: smooth;
+}
+
+/* --- SECTION 1 --- */
+.section-1 {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffe6ec;
+  text-align: center;
+  padding: 20px;
+}
+
+.section-1 img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.section-1 img:hover {
+  transform: scale(1.05);
+}
+
+.question {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ff4d6d;
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  padding: 14px 28px;
+  margin: 10px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-yes {
+  background: #ff4d6d;
+  color: white;
+}
+.btn-yes:hover {
+  background: #ff6f8f;
+}
+
+.btn-no {
+  background: #ccc;
+}
+.btn-no:hover {
+  background: #bbb;
+}
+
+/* --- SECTION 2 --- */
+.section-2 {
+  padding: 80px 20px;
+  background: #fff0f3;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 500px;
+  min-height: 600px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-inner {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 15px;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  overflow-y: auto; /* make sure content scrolls if it overflows */
+  scrollbar-width: thin;
+  scrollbar-color: #ffb6c1 transparent;
+}
+
+.card-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-side::-webkit-scrollbar-thumb {
+  background-color: #ff4d6d;
+  border-radius: 10px;
+}
+
+.front {
+  background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+  box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+  text-align: center;
+}
+
+.back {
+  font-size: 1.2rem;
+  background: #ff4d6d;
+  color: wheat;
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+/* Links inside back */
+.card-side.back a {
+  transition: all 0.3s;
+}
+.card-side.back a:hover {
+  background: #ffe6ec;
+  color: #ff4d6d;
+  transform: scale(1.1);
+}
+.card-side.back::before,
+.card-side.back::after {
+  content: '💖';
+  position: absolute;
+  font-size: 1.2rem;
+  animation: floatHeart 4s infinite;
+}
+.card-side.back::after {
+  top: 70%;
+  left: 60%;
+  animation-duration: 5s;
+}
+.card-side.back::before {
+  top: 10%;
+  left: 20%;
+}
+
+/* Sparkle animation on front */
+.card-side.front::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  opacity: 0.8;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0% { transform: translate(0,0) scale(1); opacity:0.8; }
+  50% { transform: translate(40px, -30px) scale(1.5); opacity:0.3; }
+  100% { transform: translate(0,0) scale(1); opacity:0.8; }
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(0deg); opacity:1; }
+  50% { transform: translateY(-2px) rotate(20deg); opacity:0.6; }
+  100% { transform: translateY(0) rotate(0deg); opacity:1; }
+}
+
+/* --- SECTION 3 --- */
+.section-3 {
+  background: #ffe6ec;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  text-align: center;
+  color: #ff4d6d;
+}
+
+input, select, button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ffccd5;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff4d6d;
+  box-shadow: 0 0 8px rgba(255, 77, 109, 0.3);
+}
+
+button {
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #ff6f8f;
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff0f3;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto; /* scroll if content is large */
+}
+
+.modal-content img {
+  max-width: 100%;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background: #ff6f8f;
+}
+
+/* --- RESPONSIVE STYLING --- */
+@media (max-width: 1200px) {
+  .section-2 {
+    justify-content: center;
+    gap: 20px;
+  }
+  .card {
+    width: 400px;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-1 img {
+    width: 200px;
+    height: 200px;
+  }
+  .question {
+    font-size: 2rem;
+  }
+  .card {
+    width: 350px;
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-1 {
+    padding: 15px;
+  }
+  .buttons button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  .card {
+    width: 300px;
+    min-height: 400px;
+  }
+  .card-side {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-1 img {
+    width: 150px;
+    height: 150px;
+  }
+  .question {
+    font-size: 1.6rem;
+  }
+  .buttons button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  .card {
+    width: 250px;
+    min-height: 350px;
+  }
+  .card-side {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+  form {
+    padding: 20px;
+  }
+}
