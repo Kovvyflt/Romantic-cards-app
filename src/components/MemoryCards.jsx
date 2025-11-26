@@ -61,7 +61,7 @@ I love you. ❤️❤️`;
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="text" name="restaurant" value="Gyu-kaku japanese bbq " readOnly />
             <input type="date" name="date" value="2025-11-28" readOnly />
-            <input type="time" name="time" required />
+            <input type="text" name="time" value="7:15pm" readOnly />
             <button type="submit">Confirm</button>
           </form>
         </div>
