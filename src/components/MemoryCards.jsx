@@ -35,7 +35,9 @@ I ended up choosing 30 songs, but I arranged them in a way that tells our story:
 21–25: “I choose you, and I’d choose every version of you.”
 26–30: “Me & you, in our own little world.”
 
-I hope the message comes through clearly.
+Lmao i forgot Tyler 😂😂😭
+I really hope you like and understand it.
+
 
 I love you. ❤️❤️`;
 
@@ -48,7 +50,7 @@ I love you. ❤️❤️`;
     {
       front: 'How You Make Me Feel 🙈🙈💕',
       back: <div className="card2-back-content">
-        <p>Click on the link to download the letter ❤️</p>
+        <p>Click on the link to download the letter  ❤️</p>
         <a href={loveLetter} className='links'>My letter to you ❤️</a>
         </div>
     },
